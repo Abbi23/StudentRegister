@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registration Page</title>
+    </h:head>
+    <h:body>
+        <h1>Student Registration Page</h1>
+        <h:form>
+            <h:panelGrid columns="3">
+            <h:outputLabel>FirstName:</h:outputLabel>
+            <h:inputText value="#{student.firstName}" 
+                         required="true" label="FirstName"
+                         id="firstname">
+            </h:inputText>
+            <h:message style="color: red" for="firstname"/>
+            <h:outputLabel>LastName:</h:outputLabel>
+            <h:inputText value="#{student.lastName}"
+                         required="true" label="LastName"
+                         id="lastname">
+            </h:inputText>
+            <h:message style="color: red" for="lastname"/>
+            
+            <h:outputLabel>Age:</h:outputLabel>
+            <h:inputText value="#{student.age}"
+                         label="Age"
+                         id="age"> 
+                <f:validateLongRange minimum="18" maximum="45" />
+            </h:inputText>
+            <h:message style="color: red" for="age"/>
+            
+            <h:outputLabel>Password:</h:outputLabel>
+            <h:inputSecret value="#{student.password}"
+                           label="Password" required="true"
+                           id="passwd">
+                <f:validateLength minimum="8" />
+            </h:inputSecret>
+            <h:message style="color: red" for="passwd"/>
+            <h:commandButton value="Register" action="#{student.saveStudent(student)}"/>
+            </h:panelGrid>
+            </h:form>
+    </h:body>
+</html>
+
